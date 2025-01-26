@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Developer Role="Senior Developer">
+  <FirstName>Muzio</FirstName>
+  <LastName>Valerio</LastName>
+  <Age>60</Age>
+  <Projects>
+    <Language>Delphi</Language>
+    <ProjectName>
+      <XMLWriter Written="True" Tested="in progress"/>
+      <XMLReader Written="True" Tested="False"/>
+    </ProjectName>
+  </Projects>
+</Developer>
