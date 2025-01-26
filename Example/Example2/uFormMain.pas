@@ -1,6 +1,6 @@
 {-----------------------------------------------------------------------------
    Example2
-   Copyright (C) 2024 Muzio Valerio
+   Copyright (C) 2024-2030 Muzio Valerio
 
    Unit Name: uFormMain
    Author:    muzio
@@ -73,11 +73,11 @@ begin
     aNodeList.OpenNode('ProjectNames');
       aNodeList.OpenNode('XMLWriter');
         aNodeList.AddLeafNode('Written').AsBoolean(True);
-        aNodeList.AddLeafNode('Testetd').AsString('In Progress');
+        aNodeList.AddLeafNode('Testetd').AsBoolean(True);
       aNodeList.CloseNode;
       aNodeList.OpenNode('XMLReader');
         aNodeList.AddLeafNode('Written').AsBoolean(True);
-        aNodeList.AddLeafNode('Tested').AsBoolean(False);
+        aNodeList.AddLeafNode('Tested').AsBoolean(True);
       aNodeList.CloseNode;
     aNodeList.CloseNode;
   aNodeList.CloseNode;

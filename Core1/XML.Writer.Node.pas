@@ -1,6 +1,6 @@
 {-----------------------------------------------------------------------------
    XMLWriter Lib
-   Copyrigth (C) 2023 Muzio Valerio
+   Copyrigth (C) 2023-2030 Muzio Valerio
 
    Unit Name: XML.Writer.Node
    Author:    muzio
@@ -196,8 +196,9 @@ begin
     Result := '<' + Name;
     lKeys := FAttributes.Keys.ToArray;
     TArray.Sort<Integer>(lKeys);
+    // Modified by muzio_dell Date 26-gen-2025
     for var lKey in lKeys do
-      Result := Format('%s %s="%s"', [Result, FAttributes.Items[lKey].Key, FAttributes.Items[lKey].Value]);
+      Result := Format('%s %s = "%s"', [Result, FAttributes.Items[lKey].Key, FAttributes.Items[lKey].Value]);
     Result := Result + '>';
   end;
 end;
@@ -305,7 +306,7 @@ end;
 
 procedure TXMLNodeList.Clear;
 begin
-  for var lCount := 0 to FList.Count-1 do
+  for var lCount := 0 to Pred(FList.Count) do
     FreeAndNil(Node[lCount]);
 
   FList.Clear;

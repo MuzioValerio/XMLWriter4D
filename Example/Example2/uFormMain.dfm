@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'XML Writer Example 2 Simple'
   ClientHeight = 442
   ClientWidth = 628
   Color = clBtnFace
@@ -19,7 +19,6 @@ object Form1: TForm1
     Height = 40
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 618
     object ExecuteButton: TButton
       AlignWithMargins = True
       Left = 6
@@ -45,7 +44,6 @@ object Form1: TForm1
       Action = ExitAction
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 537
     end
     object CheckBoxDisplayText: TCheckBox
       Left = 416
@@ -68,8 +66,6 @@ object Form1: TForm1
     ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 1
-    ExplicitWidth = 618
-    ExplicitHeight = 389
   end
   object ActionList: TActionList
     Left = 72

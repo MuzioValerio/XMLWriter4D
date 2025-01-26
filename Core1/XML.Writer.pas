@@ -1,6 +1,6 @@
 {-----------------------------------------------------------------------------
    Writer Lib
-   Copyrigth (C) 2023 Muzio Valerio
+   Copyrigth (C) 2023-2030 Muzio Valerio
 
    Unit Name: XML.Writer
    Author:    muzio
@@ -23,6 +23,8 @@ uses
 
 type
   TXMLWriter = class(TObject)
+  strict private
+    procedure NodeToStringList(var aXML: TStringList; aNode: TXMLNode; aReplaceChars: Boolean);
   private
     FAutoIndent: Boolean;
     FEncoding: string;
@@ -36,8 +38,6 @@ type
 
     function GetDisplayText: string;
     function GetXMLText: string;
-    procedure SetXMLText(const aValue: string);
-
     procedure SetAutoIndent(const aValue: Boolean);
     procedure SetEncoding(const aValue: string);
     procedure SetIncludeHeader(const aValue: Boolean);
@@ -113,28 +113,6 @@ begin
 end;
 
 function TXMLWriter.GetText(const ReplaceEscapeChars: Boolean): string;
-  procedure NodeToStringList(var aXML: TStringList; aNode: TXMLNode; aReplaceChars: Boolean);
-  var
-    lCount: integer;
-    aValue: string;
-  begin
-    if aNode.IsLeafNode then
-    begin
-      if aReplaceChars then
-        aValue := aNode.DisplayString
-      else
-        aValue := aNode.RealString;
-      aXML.Add(Format('%s%s%s%s', [GetIndent(aNode.Level), aNode.OpenTag, aValue, aNode.CloseTag]));
-    end
-    else
-    begin
-      aXML.Add(GetIndent(aNode.Level) + aNode.OpenTag);
-      for lCount := 0 to aNode.Children.Count-1 do
-        NodeToStringList(aXML, aNode.Children.Node[lCount], aReplaceChars);
-      aXML.Add(GetIndent(aNode.Level) + aNode.CloseTag);
-    end;
-  end;
-
 begin
   FStrings.Clear;
   if FNodes.Count = 0 then Exit;
@@ -153,49 +131,25 @@ begin
   Result := GetText(False);
 end;
 
-procedure TXMLWriter.SetXMLText(const aValue: string);
+procedure TXMLWriter.NodeToStringList(var aXML: TStringList; aNode: TXMLNode; aReplaceChars: Boolean);
+var
+  lCount: integer;
+  aValue: string;
 begin
-  var lText := aValue;
-  var lCursor := 1;
-  var lTags := '';
-  var lValue := '';
-  var lTag := '';
-
-  while lCursor <> lText.Length do
+  if aNode.IsLeafNode then
   begin
-    lValue := '';
-
-    if lText[lCursor] = '<' then
-    begin
-      // reading a tag
-      lTag := '<';
-      while lText[lCursor] <> '>' do
-      begin
-        Inc(lCursor);
-        lTag := lTag + lText[lCursor];
-      end;
-
-      if lTag[2] = '/' then
-        Nodes.CloseNode
-      else
-      if lTag[2] <> '?' then
-        Nodes.OpenNode(lTag)
-    end
+    if aReplaceChars then
+      aValue := aNode.DisplayString
     else
-    begin
-      // reading a Value...
-      while (lText[lCursor]  <> '<') and (lCursor < lText.Length) do
-      begin
-        lValue := lValue + lText[lCursor];
-        Inc(lCursor);
-      end;
-
-      if Assigned(Nodes.CurrentNode) then
-        Nodes.CurrentNode.AsString(lValue);
-      Dec(lCursor);
-    end;
-
-    Inc(lCursor);
+      aValue := aNode.RealString;
+    aXML.Add(Format('%s%s%s%s', [GetIndent(aNode.Level), aNode.OpenTag, aValue, aNode.CloseTag]));
+  end
+  else
+  begin
+    aXML.Add(GetIndent(aNode.Level) + aNode.OpenTag);
+    for lCount := 0 to aNode.Children.Count-1 do
+      NodeToStringList(aXML, aNode.Children.Node[lCount], aReplaceChars);
+    aXML.Add(GetIndent(aNode.Level) + aNode.CloseTag);
   end;
 end;
 

@@ -20,7 +20,6 @@ object FormMain: TFormMain
     Height = 40
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 629
     object LabelPath: TLabel
       Left = 99
       Top = 12
@@ -53,7 +52,6 @@ object FormMain: TFormMain
       Action = ExitAction
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 548
     end
     object EditPath: TEdit
       Left = 129
@@ -75,8 +73,6 @@ object FormMain: TFormMain
     ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 1
-    ExplicitWidth = 629
-    ExplicitHeight = 458
   end
   object ActionList: TActionList
     Left = 72

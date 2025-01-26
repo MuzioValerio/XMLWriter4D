@@ -1,6 +1,6 @@
 {-----------------------------------------------------------------------------
    Example1
-   Copyright (C) 2024 Muzio Valerio
+   Copyright (C) 2024-2030 Muzio Valerio
 
    Unit Name: uFormMain
    Author:    muzio
@@ -78,7 +78,7 @@ begin
       lXMLWriter.Nodes.AddLeafNode('FirstName').AsString('Muzio');
       lXMLWriter.Nodes.AddLeafNode('LastName').AsString('Valerio');
       lXMLWriter.Nodes.AddLeafNode('Informazioni').AsString('Qualità & attenzione hai dettagli');
-      lXMLWriter.Nodes.AddLeafNode('Age').AsInteger(60);
+      lXMLWriter.Nodes.AddLeafNode('Age').AsInteger(62);
       lXMLWriter.Nodes.AddLeafNode('Importo').AsFloat(8.90, 4);
       lXMLWriter.Nodes.AddLeafNode('DataDocumento').AsString(TXMLUtility.SetISO8601DateTo(Date));
       lXMLWriter.Nodes.AddLeafNode('DataDocumento').AsDate(Date);
@@ -87,11 +87,11 @@ begin
         lXMLWriter.Nodes.OpenNode('ProjectNames');
           lXMLWriter.Nodes.OpenNode('XMLWriter');
             lXMLWriter.Nodes.AddLeafNode('Written').AsBoolean(True);
-            lXMLWriter.Nodes.AddLeafNode('Testetd').AsString('In Progress');
+            lXMLWriter.Nodes.AddLeafNode('Testetd').AsBoolean(True);
           lXMLWriter.Nodes.CloseNode;
           lXMLWriter.Nodes.OpenNode('XMLReader');
             lXMLWriter.Nodes.AddLeafNode('Written').AsBoolean(True);
-            lXMLWriter.Nodes.AddLeafNode('Tested').AsBoolean(False);
+            lXMLWriter.Nodes.AddLeafNode('Tested').AsBoolean(True);
           lXMLWriter.Nodes.CloseNode;
         lXMLWriter.Nodes.CloseNode;
       lXMLWriter.Nodes.CloseNode;

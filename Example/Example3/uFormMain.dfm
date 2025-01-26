@@ -19,7 +19,6 @@ object FormMain: TFormMain
     Height = 40
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 629
     object ExecuteButton: TButton
       AlignWithMargins = True
       Left = 6
@@ -45,7 +44,6 @@ object FormMain: TFormMain
       Action = ExitAction
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 548
     end
   end
   object mXMLView: TMemo
@@ -60,8 +58,6 @@ object FormMain: TFormMain
     ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 1
-    ExplicitWidth = 629
-    ExplicitHeight = 458
   end
   object ActionList: TActionList
     Left = 72

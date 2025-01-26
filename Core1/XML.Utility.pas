@@ -1,6 +1,6 @@
 {-----------------------------------------------------------------------------
    XMLWrite Lib
-   Copyrigth (C) 2023 Muzio Valerio
+   Copyrigth (C) 2023-2030 Muzio Valerio
 
    Unit Name: XML.Utility
    Author:    muzio
